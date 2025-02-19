@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.shujiai.ka</groupId>
+        <artifactId>shujiai-ka</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <groupId>com.shujiai.ka</groupId>
+    <artifactId>shujiai-ka-sal</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <name>shujiai-ka-infrastructure</name>
+    <description>Demo project for Spring Boot</description>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.shujiai.ka</groupId>
+            <artifactId>shujiai-ka-domain</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.shujiai.metadata</groupId>
+            <artifactId>shujiai-metadata-facade</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.shujiai.apaas</groupId>
+            <artifactId>shujiai-bpmn-facade</artifactId>
+        </dependency>
+
+        <!-- Redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!--springboot2.X默认使用lettuce连接池，需要引入commons-pool2-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.shujiai.idaas</groupId>
+            <artifactId>user-center-facade</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.shujiai.idaas</groupId>
+            <artifactId>rbac-facade</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.shujiai.apaas</groupId>
+            <artifactId>shujiai-rule-xxl-job-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.shujiai.apaas</groupId>
+            <artifactId>shujiai-rule-facade</artifactId>
+        </dependency>
+
+    </dependencies>
+</project>
+

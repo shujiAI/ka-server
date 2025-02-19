@@ -1,0 +1,46 @@
+package ${package.Other}.request;
+
+import java.io.Serializable;
+#foreach($pkg in ${table.importPackages})
+## 判断date包导入
+    #if($pkg == "java.util.Date")
+import ${pkg};
+    #end
+#end
+#if(${entityLombokModel})
+import lombok.*;
+#if(${chainModel})
+import lombok.experimental.Accessors;
+#end
+#end
+#foreach($field in ${table.fields})
+    #if($field.type.indexOf('decimal') != -1)
+import java.math.BigDecimal;
+    #end
+    #if($field.propertyName.toLowerCase().indexOf('time') !=-1)
+import com.fasterxml.jackson.annotation.JsonFormat;
+    #end
+#end
+
+/**
+* <p>
+* $!{table.comment}VO
+* </p>
+*
+* @author ${author}
+* @since ${date}
+*/
+#if(${entityLombokModel})
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+#if(${chainModel})
+@Accessors(chain = true)
+#end
+#end
+public class ${entity}PageRequest extends ${entity}Request implements Serializable {
+
+    private int pageNo = 1;
+
+    private int pageSize = 10;
+}

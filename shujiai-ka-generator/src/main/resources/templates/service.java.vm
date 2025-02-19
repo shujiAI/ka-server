@@ -1,0 +1,47 @@
+package ${package.Service};
+
+import ${package.Entity}.${entity};
+import ${superServiceClassPackage};
+import ${dto};
+import ${request};
+import ${pagerequest};
+import java.util.*;
+import com.shujiai.metadata.facade.dto.PageResult;
+
+
+/**
+ * <p>
+ * $!{table.comment} 服务类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+#if(${kotlin})
+interface ${table.serviceName} : ${superServiceClass}<${entity}>
+#else
+public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
+## 主键类型判断
+#foreach($field in ${table.fields})
+    #if(${field.keyFlag})
+## 主键类型
+        #set($idType=${field.propertyType})
+## 主键名称
+        #set($idName=${field.propertyName})
+## 跳出
+        #break
+    #end
+#end
+    boolean create(${entity}Request request);
+
+    boolean delete(${entity}Request request);
+
+    boolean update(${entity}Request request);
+
+    ${entity}DTO getById(${entity}Request request);
+
+    List<${entity}DTO> findList(${entity}Request request);
+
+    PageResult<${entity}DTO> findPage(${entity}PageRequest request);
+}
+#end

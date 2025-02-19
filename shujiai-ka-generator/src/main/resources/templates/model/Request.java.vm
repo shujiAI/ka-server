@@ -1,0 +1,59 @@
+package ${package.Other}.request;
+
+import java.io.Serializable;
+#foreach($pkg in ${table.importPackages})
+## 判断date包导入
+    #if($pkg == "java.util.Date")
+import ${pkg};
+    #end
+#end
+#if(${entityLombokModel})
+import lombok.*;
+#if(${chainModel})
+import lombok.experimental.Accessors;
+#end
+#end
+#foreach($field in ${table.fields})
+    #if($field.type.indexOf('decimal') != -1)
+import java.math.BigDecimal;
+    #end
+    #if($field.propertyName.toLowerCase().indexOf('time') !=-1)
+import com.fasterxml.jackson.annotation.JsonFormat;
+    #end
+#end
+
+/**
+* <p>
+* $!{table.comment}VO
+* </p>
+*
+* @author ${author}
+* @since ${date}
+*/
+#if(${entityLombokModel})
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+#if(${chainModel})
+@Accessors(chain = true)
+#end
+#end
+public class ${entity}Request implements Serializable {
+
+## ----------  BEGIN 字段循环遍历  ----------
+#foreach($field in ${table.fields})
+## 逻辑删除 / 乐观锁 不生成字段
+#if(${field.logicDeleteField}|| ${field.versionField})
+## 创建时间 / 修改时间 不生成字段
+#elseif($field.propertyName.indexOf('gmtCreate') !=-1 || $field.propertyName.indexOf('gmtModified') !=-1
+    || $field.propertyName.indexOf('createBy') !=-1 || $field.propertyName.indexOf('updateBy') !=-1
+    || $field.propertyName.indexOf('bpmInstanceStatus') !=-1 || $field.propertyName.indexOf('bpmInstanceId') !=-1)
+#else
+#if($field.propertyName.toLowerCase().indexOf('time') !=-1)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+#end
+    private ${field.propertyType} ${field.propertyName};
+
+#end
+#end
+}

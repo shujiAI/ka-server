@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.8</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.shujiai.ka</groupId>
+    <artifactId>shujiai-ka</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>shujiai-ka</name>
+    <description>Demo project for Spring Boot</description>
+
+    <modules>
+        <module>shujiai-ka-sal</module>
+        <module>shujiai-ka-application</module>
+        <module>shujiai-ka-domain</module>
+        <module>shujiai-ka-facade</module>
+        <module>shujiai-ka-web</module>
+        <module>shujiai-ka-start</module>
+        <module>shujiai-ka-generator</module>
+    </modules>
+
+    <properties>
+        <!--    子工程版本号start   -->
+        <shujiai.third.sal.version>1.0.0-SNAPSHOT</shujiai.third.sal.version>
+        <shujiai.third.facade.version>1.0.0-SNAPSHOT</shujiai.third.facade.version>
+        <shujiai.third.domain.version>1.0.0-SNAPSHOT</shujiai.third.domain.version>
+        <shujiai.third.application.version>1.0.0-SNAPSHOT</shujiai.third.application.version>
+        <shujiai.third.web.version>1.0.0-SNAPSHOT</shujiai.third.web.version>
+        <shujiai.third.start.version>1.0.0-SNAPSHOT</shujiai.third.start.version>
+        <!--    子工程版本号end   -->
+        <!--    数基智能功能组件   -->
+        <shujiai-base.version>2.0.0-SNAPSHOT</shujiai-base.version>
+        <shujiai-gateway-register.version>2.0.0-SNAPSHOT</shujiai-gateway-register.version>
+        <metadata.version>2.0.0-SNAPSHOT</metadata.version>
+        <bpmn.version>2.0.0-SNAPSHOT</bpmn.version>
+        <user.center.facade.version>2.0.0-SNAPSHOT</user.center.facade.version>
+        <shujiai-rbac.version>2.0.0-SNAPSHOT</shujiai-rbac.version>
+        <xxl-job-core-version>2.0.0-SNAPSHOT</xxl-job-core-version>
+        <rule.version>2.0.0-SNAPSHOT</rule.version>
+        <!--    数基智能功能组件   -->
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+
+        <spring-boot-starter.version>2.7.8</spring-boot-starter.version>
+        <spring.version>5.3.25</spring.version>
+        <mybatis-plus.version>3.4.1</mybatis-plus.version>
+        <dubbo.version>2.7.3</dubbo.version>
+        <dubbo-registry-nacos.version>2.7.6</dubbo-registry-nacos.version>
+        <fasterxml.jackson.version>2.11.3</fasterxml.jackson.version>
+        <lombok.version>1.18.20</lombok.version>
+        <hutool.version>5.8.16</hutool.version>
+        <hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
+        <druid-spring-boot-starter.version>1.2.6</druid-spring-boot-starter.version>
+        <mysql-connector-java.version>8.0.25</mysql-connector-java.version>
+    </properties>
+
+    <!--所有工程的依赖-->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.shujiai</groupId>
+            <artifactId>gateway-autoregister-spring-boot-starter</artifactId>
+            <version>${shujiai-gateway-register.version}</version>
+        </dependency>
+    </dependencies>
+
+    <!--依赖管理-->
+    <dependencyManagement>
+        <dependencies>
+            <!--子工程管理开始   -->
+            <dependency>
+                <groupId>com.shujiai.ka</groupId>
+                <artifactId>shujiai-ka-facade</artifactId>
+                <version>${shujiai.third.facade.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.shujiai.ka</groupId>
+                <artifactId>shujiai-ka-domain</artifactId>
+                <version>${shujiai.third.domain.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.shujiai.ka</groupId>
+                <artifactId>shujiai-ka-sal</artifactId>
+                <version>${shujiai.third.sal.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shujiai.ka</groupId>
+                <artifactId>shujiai-ka-application</artifactId>
+                <version>${shujiai.third.application.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.shujiai.ka</groupId>
+                <artifactId>shujiai-ka-web</artifactId>
+                <version>${shujiai.third.web.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.shujiai.ka</groupId>
+                <artifactId>shujiai-ka-start</artifactId>
+                <version>${shujiai.third.start.version}</version>
+            </dependency>
+            <!--子工程管理结束   -->
+
+            <!-- 数基智能metadata包   -->
+            <dependency>
+                <groupId>com.shujiai.metadata</groupId>
+                <artifactId>shujiai-metadata-facade</artifactId>
+                <version>${metadata.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shujiai.apaas</groupId>
+                <artifactId>shujiai-bpmn-facade</artifactId>
+                <version>${bpmn.version}</version>
+            </dependency>
+
+            <!-- 裸包相关 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+                <version>2021.0.4.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-bootstrap</artifactId>
+                <version>3.1.5</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>spring-cloud-commons</artifactId>
+                        <groupId>org.springframework.cloud</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-cloud-context</artifactId>
+                        <groupId>org.springframework.cloud</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.shujiai</groupId>
+                <artifactId>shujiai-base</artifactId>
+                <version>${shujiai-base.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <!--dubbo-->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-registry-nacos</artifactId>
+                <version>${dubbo-registry-nacos.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${fasterxml.jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${fasterxml.jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${fasterxml.jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.shujiai.idaas</groupId>
+                <artifactId>user-center-facade</artifactId>
+                <version>${user.center.facade.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shujiai.idaas</groupId>
+                <artifactId>rbac-facade</artifactId>
+                <version>${shujiai-rbac.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.shujiai.apaas</groupId>
+                <artifactId>shujiai-rule-xxl-job-core</artifactId>
+                <version>${xxl-job-core-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.shujiai.apaas</groupId>
+                <artifactId>shujiai-rule-facade</artifactId>
+                <version>${rule.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 环境 -->
+    <profiles>
+        <!-- 开发 -->
+        <profile>
+            <id>dev</id>
+            <activation>
+                <!--默认激活配置-->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!--当前环境-->
+                <profile.name>dev</profile.name>
+                <!--配置文件前缀-->
+                <prefix.name>application</prefix.name>
+            </properties>
+        </profile>
+        <!-- onpremise -->
+        <profile>
+            <id>onpremise</id>
+            <properties>
+                <!--当前环境-->
+                <profile.name>onpremise</profile.name>
+                <!--配置文件前缀-->
+                <prefix.name>application</prefix.name>
+            </properties>
+        </profile>
+        <!-- 测试 -->
+        <profile>
+            <id>test</id>
+            <properties>
+                <!--当前环境-->
+                <profile.name>test</profile.name>
+                <!--配置文件前缀-->
+                <prefix.name>application</prefix.name>
+            </properties>
+        </profile>
+        <!-- 生产 -->
+        <profile>
+            <id>prod</id>
+            <properties>
+                <!--当前环境,生产环境为空-->
+                <profile.name>prod</profile.name>
+                <!--配置文件前缀-->
+                <prefix.name>application</prefix.name>
+            </properties>
+        </profile>
+    </profiles>
+</project>

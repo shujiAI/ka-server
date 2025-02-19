@@ -1,0 +1,35 @@
+package ${package.Parent}.dubbo;
+
+
+import ${dto};
+import ${request};
+import ${pagerequest};
+import java.util.*;
+import com.shujiai.metadata.facade.dto.PageResult;
+import com.shujiai.base.result.Result;
+import com.shujiai.base.context.Context;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
+/**
+ * <p>
+ * $!{table.comment} 服务类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+public interface ${table.serviceName.replaceFirst("Sys","")}  {
+
+    Result<Boolean> create(Context context, @Valid @NotNull ${entity}Request request);
+
+    Result<Boolean> delete(Context context, @Valid @NotNull ${entity}Request request);
+
+    Result<Boolean> update(Context context, @Valid @NotNull ${entity}Request request);
+
+    Result<${entity}DTO> getById(Context context, @Valid @NotNull ${entity}Request request);
+
+    Result<List<${entity}DTO>> findList(Context context, @Valid @NotNull ${entity}Request request);
+
+    Result<PageResult<${entity}DTO>> findPage(Context context, @Valid @NotNull ${entity}PageRequest request);
+}

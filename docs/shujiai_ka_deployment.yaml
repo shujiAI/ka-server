@@ -1,0 +1,78 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: shujiai-ka-onpremise-pv-volume
+  labels:
+    pv: shujiai-ka-onpremise-pv-volume
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 50Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/home/onpremise/shujiai-ka"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: shujiai-ka-onpremise-pv-claim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+  selector:
+    matchLabels:
+       pv: shujiai-ka-onpremise-pv-volume
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: onpremise-shujiai-ka
+  namespace: default
+  labels:
+    k8s-app: onpremise-shujiai-ka
+    app: onpremise-shujiai-ka
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: onpremise-shujiai-ka
+  template:
+    metadata:
+      name: onpremise-shujiai-ka
+      labels:
+        app: onpremise-shujiai-ka
+        k8s-app: onpremise-shujiai-ka
+    spec:
+      volumes:
+        - name: shujiai-ka-logs-pv-storage
+          persistentVolumeClaim:
+            claimName: shujiai-ka-onpremise-pv-claim
+      containers:
+        - name: onpremise-shujiai-ka
+          imagePullPolicy: IfNotPresent
+          image: registry.cn-hangzhou.aliyuncs.com/shujiai/shujiai-ka:2.0.0.onpremise
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: onpremise
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sleep", "60"]
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          securityContext:
+            privileged: false
+          volumeMounts:
+            - name: shujiai-ka-logs-pv-storage
+              mountPath: /home/admin/shujiai-ka
+      restartPolicy: Always
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+      imagePullSecrets:
+        - name: regcred

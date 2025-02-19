@@ -1,0 +1,118 @@
+package ${package.ServiceImpl};
+
+import ${package.Entity}.${entity};
+import ${package.Mapper}.${table.mapperName};
+import ${package.Service}.${table.serviceName};
+import ${superServiceImplClassPackage};
+import ${dto};
+import ${request};
+import ${pagerequest};
+import com.shujiai.metadata.facade.dto.PageResult;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import org.springframework.stereotype.Service;
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.ObjectUtil;
+import java.util.*;
+
+/**
+ * <p>
+ * $!{table.comment} 服务实现类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Service
+#if(${kotlin})
+open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperName}, ${entity}>(), ${table.serviceName} {
+
+}
+#else
+public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
+## 主键类型判断
+#foreach($field in ${table.fields})
+    #if(${field.keyFlag})
+## 主键类型
+        #set($idType=${field.propertyType})
+## 主键名称
+        #set($idName=${field.propertyName})
+## 跳出
+        #break
+    #end
+#end
+    @Override
+    public boolean create(${entity}Request request){
+        ${entity} entity = BeanUtil.copyProperties(request,${entity}.class);
+        return super.save(entity);
+    }
+
+    @Override
+    public boolean delete(${entity}Request request){
+        return super.removeById(request.getId());
+    }
+
+    @Override
+    public boolean update(${entity}Request request){
+        ${entity} entity = BeanUtil.copyProperties(request,${entity}.class);
+        return super.updateById(entity);
+    }
+
+    @Override
+    public ${entity}DTO getById(${entity}Request request){
+        ${entity} entity = super.getById(request.getId());
+        return BeanUtil.copyProperties(entity,${entity}DTO.class);
+    }
+
+    @Override
+    public List<${entity}DTO> findList(${entity}Request request){
+        List<${entity}> entitys = super.list(getQueryWrapper(request));
+        return BeanUtil.copyToList(entitys,${entity}DTO.class);
+    }
+
+    @Override
+    public PageResult<${entity}DTO> findPage(${entity}PageRequest request){
+        PageResult<${entity}DTO> result = new PageResult();
+        Page<${entity}> page = super.page(new Page(request.getPageNo(), request.getPageSize()), getQueryWrapper(request));
+        result.setPageNo(page.getCurrent());
+        result.setPageSize(page.getSize());
+        result.setTotal(page.getTotal());
+        if(page.getRecords() != null){
+            result.setRecords(BeanUtil.copyToList(page.getRecords(),${entity}DTO.class));
+        }
+        return result;
+    }
+
+    public LambdaQueryWrapper<${entity}> getQueryWrapper(${entity}Request request){
+        return Wrappers.<${entity}>lambdaQuery()
+## 循环字段
+#foreach($field in ${table.fields})
+## 过滤逻辑删除字段
+    #if(${field.logicDeleteField} || ${field.versionField})
+## 不判断自动填充字段
+    #elseif($field.propertyName.indexOf('gmtCreate') !=-1 || $field.propertyName.indexOf('gmtModified') !=-1
+        || $field.propertyName.indexOf('createBy') !=-1 || $field.propertyName.indexOf('updateBy') !=-1
+        || $field.propertyName.indexOf('bpmInstanceStatus') !=-1 || $field.propertyName.indexOf('bpmInstanceId') !=-1)
+
+## boolean字段类型判断
+    #elseif(${field.propertyType} == 'Boolean')
+        #set($convert = $field.propertyName)
+        #set($name=$convert.substring(0,1).toUpperCase() + ${convert.substring(1)})
+            .eq(ObjectUtil.isNotEmpty(request.get${name}()), ${entity}::get${name}, request.get${name}() ? 1 : 0)
+    #else
+        #set($convert = $field.propertyName)
+        #set($name=$convert.substring(0,1).toUpperCase() + ${convert.substring(1)})
+            .eq(ObjectUtil.isNotEmpty(request.get${name}()), ${entity}::get${name}, request.get${name}())
+    #end
+    #if(!$foreach.hasNext)
+        ;
+    #end
+#end
+    }
+}
+#end
+## function: 使第一个字符大写
+#macro(convert $string)
+    #set($name=$string.substring(0,1).toUpperCase() + ${string.substring(1)})
+#end

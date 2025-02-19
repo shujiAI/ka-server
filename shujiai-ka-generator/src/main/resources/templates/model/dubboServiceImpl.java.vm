@@ -1,0 +1,73 @@
+package ${package.Parent}.dubbo;
+
+import ${package.Service}.${table.serviceName};
+import ${dto};
+import ${request};
+import ${pagerequest};
+import com.shujiai.metadata.facade.dto.PageResult;
+import com.shujiai.gateway.register.annotation.YdcGateway;
+import org.apache.dubbo.config.annotation.Service;
+import org.springframework.validation.annotation.Validated;
+import com.shujiai.base.result.Result;
+import com.shujiai.base.context.Context;
+
+import javax.annotation.Resource;
+import java.util.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
+/**
+ * <p>
+ * $!{table.comment} 服务实现类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Validated
+@Service(version = "${dubbo.provider.version}", group = "${dubbo.provider.group}")
+public class ${table.serviceImplName.replaceFirst("Sys","")} implements ${table.serviceName.replaceFirst("Sys","")} {
+
+#set($dubboServiceName=$table.serviceName.substring(0,1).toLowerCase() + ${table.serviceName.substring(1)})
+#set($modelName1=$entity.replaceFirst("Sys",""))
+#set($modelName=$modelName1.substring(0,1).toLowerCase() + ${modelName1.substring(1)})
+    @Resource
+    private ${table.serviceName} ${dubboServiceName};
+
+    @Override
+    @YdcGateway(url = "user/${modelName}/create.json", name = "新增${table.comment}")
+    public Result<Boolean> create(Context context, @Valid @NotNull ${entity}Request request){
+        return Result.success(this.${dubboServiceName}.create(request));
+    }
+
+    @Override
+    @YdcGateway(url = "user/${modelName}/delete.json", name = "删除${table.comment}")
+    public Result<Boolean> delete(Context context, @Valid @NotNull ${entity}Request request){
+        return Result.success(this.${dubboServiceName}.delete(request));
+    }
+
+    @Override
+    @YdcGateway(url = "user/${modelName}/update.json", name = "更新${table.comment}")
+    public Result<Boolean> update(Context context, @Valid @NotNull ${entity}Request request){
+        return Result.success(this.${dubboServiceName}.update(request));
+    }
+
+    @Override
+    @YdcGateway(url = "user/${modelName}/getById.json", name = "根据ID查询${table.comment}")
+    public Result<${entity}DTO> getById(Context context, @Valid @NotNull ${entity}Request request){
+        return Result.success(this.${dubboServiceName}.getById(request));
+    }
+
+    @Override
+    @YdcGateway(url = "user/${modelName}/findList.json", name = "查询${table.comment}")
+    public Result<List<${entity}DTO>> findList(Context context, @Valid @NotNull ${entity}Request request){
+        return Result.success(this.${dubboServiceName}.findList(request));
+    }
+
+    @Override
+    @YdcGateway(url = "user/${modelName}/findPage.json", name = "分页查询${table.comment}")
+    public Result<PageResult<${entity}DTO>> findPage(Context context, @Valid @NotNull ${entity}PageRequest request){
+        return Result.success(this.${dubboServiceName}.findPage(request));
+    }
+
+}

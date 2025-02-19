@@ -1,0 +1,33 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/*/target/
+
+#log
+/HOME_IS_UNDEFINED
+/*/HOME_IS_UNDEFINED
+
+# IDEs and editors
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE
+*.iml
+/*/*.iml
+.idea/*
+!.idea/vcs.xml
+!.idea/jsonSchemas.xml
+!.idea/encodings.xml
+!.idea/dictionaries
+!.idea/codeStyles
+
+# SVN
+.svn/
+
+#project
+
+.idea/dictionaries/
