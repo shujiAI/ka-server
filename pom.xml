@@ -11,7 +11,7 @@
 
     <groupId>com.shujiai.ka</groupId>
     <artifactId>shujiai-ka</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>2.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>shujiai-ka</name>
@@ -29,12 +29,12 @@
 
     <properties>
         <!--    子工程版本号start   -->
-        <shujiai.third.sal.version>1.0.0-SNAPSHOT</shujiai.third.sal.version>
-        <shujiai.third.facade.version>1.0.0-SNAPSHOT</shujiai.third.facade.version>
-        <shujiai.third.domain.version>1.0.0-SNAPSHOT</shujiai.third.domain.version>
-        <shujiai.third.application.version>1.0.0-SNAPSHOT</shujiai.third.application.version>
-        <shujiai.third.web.version>1.0.0-SNAPSHOT</shujiai.third.web.version>
-        <shujiai.third.start.version>1.0.0-SNAPSHOT</shujiai.third.start.version>
+        <shujiai.ka.sal.version>2.0.0-SNAPSHOT</shujiai.ka.sal.version>
+        <shujiai.ka.facade.version>2.0.0-SNAPSHOT</shujiai.ka.facade.version>
+        <shujiai.ka.domain.version>2.0.0-SNAPSHOT</shujiai.ka.domain.version>
+        <shujiai.ka.application.version>2.0.0-SNAPSHOT</shujiai.ka.application.version>
+        <shujiai.ka.web.version>2.0.0-SNAPSHOT</shujiai.ka.web.version>
+        <shujiai.ka.start.version>2.0.0-SNAPSHOT</shujiai.ka.start.version>
         <!--    子工程版本号end   -->
         <!--    数基智能功能组件   -->
         <shujiai-base.version>2.0.0-SNAPSHOT</shujiai-base.version>
@@ -91,36 +91,36 @@
             <dependency>
                 <groupId>com.shujiai.ka</groupId>
                 <artifactId>shujiai-ka-facade</artifactId>
-                <version>${shujiai.third.facade.version}</version>
+                <version>${shujiai.ka.facade.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.shujiai.ka</groupId>
                 <artifactId>shujiai-ka-domain</artifactId>
-                <version>${shujiai.third.domain.version}</version>
+                <version>${shujiai.ka.domain.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.shujiai.ka</groupId>
                 <artifactId>shujiai-ka-sal</artifactId>
-                <version>${shujiai.third.sal.version}</version>
+                <version>${shujiai.ka.sal.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.shujiai.ka</groupId>
                 <artifactId>shujiai-ka-application</artifactId>
-                <version>${shujiai.third.application.version}</version>
+                <version>${shujiai.ka.application.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.shujiai.ka</groupId>
                 <artifactId>shujiai-ka-web</artifactId>
-                <version>${shujiai.third.web.version}</version>
+                <version>${shujiai.ka.web.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.shujiai.ka</groupId>
                 <artifactId>shujiai-ka-start</artifactId>
-                <version>${shujiai.third.start.version}</version>
+                <version>${shujiai.ka.start.version}</version>
             </dependency>
             <!--子工程管理结束   -->
 
