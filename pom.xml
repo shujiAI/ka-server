@@ -39,6 +39,7 @@
         <!--    数基智能功能组件   -->
         <shujiai-base.version>2.0.0-SNAPSHOT</shujiai-base.version>
         <shujiai-gateway-register.version>2.0.0-SNAPSHOT</shujiai-gateway-register.version>
+        <shujiai-gateway.version>2.0.0-SNAPSHOT</shujiai-gateway.version>
         <metadata.version>2.0.0-SNAPSHOT</metadata.version>
         <bpmn.version>2.0.0-SNAPSHOT</bpmn.version>
         <user.center.facade.version>2.0.0-SNAPSHOT</user.center.facade.version>
@@ -135,7 +136,11 @@
                 <artifactId>shujiai-bpmn-facade</artifactId>
                 <version>${bpmn.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.shujiai.apaas</groupId>
+                <artifactId>gateway-facade</artifactId>
+                <version>${shujiai-gateway.version}</version>
+            </dependency>
             <!-- 裸包相关 -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
