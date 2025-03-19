@@ -28,7 +28,7 @@ spring:
         #prefix: nacos-autoconfig-service-${spring.profile.active}
         # 配置编码
         encode: UTF-8
-        shared-dataids: shujiai-common.properties,shujiai-ka.properties,shujiai-ka-dev.properties
+        shared-dataids: shujiai-kaserver-dev.properties
         timeout: 6000
         config-long-poll-timeout: 10000
         max-retry: 3

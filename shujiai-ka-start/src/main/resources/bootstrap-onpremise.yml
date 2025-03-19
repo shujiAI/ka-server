@@ -28,7 +28,7 @@ spring:
         #prefix: nacos-autoconfig-service-${spring.profile.active}
         # 配置编码
         encode: UTF-8
-        shared-dataids: shujiai-common.properties,shujiai-ka.properties,shujiai-ka-onpremise.properties
+        shared-dataids: shujiai-kaserver-onpremise.properties
   application:
     name: shujiai-ka
 

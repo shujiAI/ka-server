@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 @RestController
 public class MainController {
-
-    @Reference(check = false, group = "${dubbo.provider.group}", version = "${dubbo.provider.version}", timeout = 10000, retries = 0)
-    private ExamApplyPlanApiService tenantService;
     @RequestMapping(value = "/checkpreload.htm")
     public @ResponseBody String checkPreload() {
         return "success";

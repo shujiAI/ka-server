@@ -53,7 +53,7 @@ public class ExamApplyPlanServiceImpl implements ExamApplyPlanService {
      * @return {@link Result}<{@link Map}<{@link String}, {@link Object}>>
      */
     @Override
-    @YdcGateway(url = "biz/ka/demoGetExamApplyPlanList.json", name = "demo：获取xxx水平测试list")
+    @YdcGateway(url = "kaserver/demoGetExamApplyPlanList.json", name = "demo：获取xxx水平测试list")
     public Result<QueryResult> getExamApplyPlanList(@Valid @NotNull Context context, @Valid @NotEmpty(message = "appId字段不能为空") String appId, @Valid @NotEmpty(message = "version字段不能为空") String version, Map<String, Object> params) {
         ContextCheck.valid(context);
         ContextCheck.validParam(appId, KAConstant.APP_ID_KEY);
@@ -76,7 +76,7 @@ public class ExamApplyPlanServiceImpl implements ExamApplyPlanService {
      * @return {@link Result}<{@link Map}<{@link String}, {@link Object}>>
      */
     @Override
-    @YdcGateway(url = "biz/ka/demoAddExamApplyPlan.json", name = "demo：创建xxx水平测试")
+    @YdcGateway(url = "kaserver/demoAddExamApplyPlan.json", name = "demo：创建xxx水平测试")
     public Result<Map<String, Object>> addExamApplyPlan(@Valid @NotNull Context context, @Valid @NotEmpty(message = "appId字段不能为空") String appId, @Valid @NotEmpty(message = "version字段不能为空") String version, Map<String, Object> params) {
         ContextCheck.valid(context);
         //参数校验
@@ -166,7 +166,7 @@ public class ExamApplyPlanServiceImpl implements ExamApplyPlanService {
      * @return {@link Result}<{@link Map}<{@link String}, {@link Object}>>
      */
     @Override
-    @YdcGateway(url = "biz/ka/demoUpdateExamApplyPlan.json", name = "demo：编辑xxx水平测试")
+    @YdcGateway(url = "kaserver/demoUpdateExamApplyPlan.json", name = "demo：编辑xxx水平测试")
     public Result<Object> updateExamApplyPlan(@Valid @NotNull Context context, @Valid @NotEmpty(message = "appId字段不能为空") String appId, @Valid @NotEmpty(message = "version字段不能为空") String version, Map<String, Object> params) {
         ContextCheck.valid(context);
         ContextCheck.validParam(params.get(ExamApplyPlanDbFieldConstants.ID), ExamApplyPlanDbFieldConstants.ID);
@@ -217,7 +217,7 @@ public class ExamApplyPlanServiceImpl implements ExamApplyPlanService {
     }
 
     @Override
-    @YdcGateway(url = "biz/ka/testA.json", name = "demo：编辑xxx水平测试")
+    @YdcGateway(url = "kaserver/testA.json", name = "demo：编辑xxx水平测试")
     public Result<QueryResult> testA(Context context, String appId, String version, Map<String, Object> params) {
         QueryResult queryResult = apiInvokeManager.queryByCustomerApi(
                 context, appId, version, ExamApplyPlanApi.TESTA,

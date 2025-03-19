@@ -3,7 +3,7 @@ EXPOSE 8080
 
 USER admin:admin
 
-ENV TZ 'Asia/Shanghai'
+ENV TZ='Asia/Shanghai'
 ENV LANG="C.UTF-8"
 
 ARG JAR_FILE
