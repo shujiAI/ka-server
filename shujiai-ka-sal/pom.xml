@@ -5,11 +5,11 @@
     <parent>
         <groupId>com.shujiai.ka</groupId>
         <artifactId>shujiai-ka</artifactId>
-        <version>2.0.0-SNAPSHOT</version>
+        <version>2.1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.shujiai.ka</groupId>
     <artifactId>shujiai-ka-sal</artifactId>
-    <version>2.0.0-SNAPSHOT</version>
+    <version>2.1.0-SNAPSHOT</version>
 
     <name>shujiai-ka-infrastructure</name>
     <description>Demo project for Spring Boot</description>

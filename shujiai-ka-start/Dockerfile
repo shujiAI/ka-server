@@ -1,13 +1,10 @@
-FROM registry.cn-hangzhou.aliyuncs.com/yundongcloud/yundong-base:1.0.0
+FROM moan-docker.tencentcloudcr.com/base/openjdk8:v1
 EXPOSE 8080
-
-USER admin:admin
 
 ENV TZ='Asia/Shanghai'
 ENV LANG="C.UTF-8"
 
 ARG JAR_FILE
-ADD ${JAR_FILE} /home/admin/app.jar
+ADD ${JAR_FILE} /home/admin/kaserver.jar
 
-ENTRYPOINT ["java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=9099","-Dspring.profiles.active=onpremise","-jar","/home/admin/app.jar"]
-
+ENTRYPOINT ["java", "-Xms2048m","-Xmx2048m","-Xmn512m","-XX:MetaspaceSize=256m","-XX:MaxMetaspaceSize=384m","-Xss512k","-XX:MaxDirectMemorySize=256m","-jar","/home/admin/kaserver.jar", "--spring.profiles.active=onpremise"]

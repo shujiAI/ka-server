@@ -55,7 +55,7 @@ spec:
       containers:
         - name: onpremise-shujiai-kaserver
           imagePullPolicy: IfNotPresent
-          image: registry.cn-hangzhou.aliyuncs.com/shujiai/shujiai-kaserver:2.0.0-SNAPSHOT
+          image: registry.cn-hangzhou.aliyuncs.com/shujiai/shujiai-kaserver:2.1.0-SNAPSHOT
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: onpremise

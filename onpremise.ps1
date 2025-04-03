@@ -8,14 +8,14 @@ mvn clean package -pl shujiai-ka-start -am  -DskipTests -Ponpremise
 # 生成镜像
 echo "start build images`:"
 cd .\shujiai-ka-start\
-docker build -f .\Dockerfile -t registry.cn-hangzhou.aliyuncs.com/shujiai/shujiai-kaserver:2.0.0-onpremise --build-arg JAR_FILE=./target/shujiai-ka-start-2.0.0-SNAPSHOT.jar .
+docker build -f .\Dockerfile -t registry.cn-hangzhou.aliyuncs.com/shujiai/shujiai-kaserver:2.1.0-csair --build-arg JAR_FILE=./target/shujiai-ka-start-2.1.0-SNAPSHOT.jar .
 if (!$?)
 {
     echo 'docker build fail.'
     exit
 }
 echo "start push images`:"
-docker push registry.cn-hangzhou.aliyuncs.com/shujiai/shujiai-kaserver:2.0.0-onpremise
+docker push registry.cn-hangzhou.aliyuncs.com/shujiai/shujiai-kaserver:2.1.0-csair
 cd ..\
 
 # 发送消息到飞书群
