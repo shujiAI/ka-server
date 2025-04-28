@@ -1,4 +1,4 @@
-FROM moan-docker.tencentcloudcr.com/base/openjdk8:v1
+FROM registry.cn-hangzhou.aliyuncs.com/yundongcloud/onpremise-opensource:openjdk8
 EXPOSE 8080
 
 ENV TZ='Asia/Shanghai'
