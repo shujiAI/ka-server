@@ -53,11 +53,11 @@
         <java.version>1.8</java.version>
 
         <spring-boot-starter.version>2.7.18</spring-boot-starter.version>
-        <spring.version>5.3.39</spring.version>
+        <spring.version>5.3.31</spring.version>
         <mybatis-plus.version>3.5.6</mybatis-plus.version>
         <dubbo.version>2.7.22</dubbo.version>
         <dubbo-registry-nacos.version>2.7.22</dubbo-registry-nacos.version>
-        <fasterxml.jackson.version>2.18.3</fasterxml.jackson.version>
+        <fasterxml.jackson.version>2.13.5</fasterxml.jackson.version>
         <lombok.version>1.18.20</lombok.version>
         <hutool.version>5.8.36</hutool.version>
         <hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
