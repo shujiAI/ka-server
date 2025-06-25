@@ -65,6 +65,7 @@
         <mysql-connector-java.version>8.0.25</mysql-connector-java.version>
         <tomcat.version>9.0.99</tomcat.version>
         <guava.version>33.4.6-jre</guava.version>
+        <easyexcel.version>3.3.2</easyexcel.version>
     </properties>
 
     <!--所有工程的依赖-->
@@ -297,6 +298,11 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

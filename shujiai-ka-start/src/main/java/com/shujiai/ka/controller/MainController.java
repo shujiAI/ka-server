@@ -1,7 +1,5 @@
 package com.shujiai.ka.controller;
 
-import com.shujiai.ka.facade.api.ExamApplyPlanApiService;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

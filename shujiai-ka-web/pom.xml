@@ -44,5 +44,9 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.shujiai.ka</groupId>
+            <artifactId>shujiai-ka-domain</artifactId>
+        </dependency>
     </dependencies>
 </project>

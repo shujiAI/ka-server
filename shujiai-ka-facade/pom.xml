@@ -16,7 +16,7 @@
 
         <shujiai-base.version>2.1.0-SNAPSHOT</shujiai-base.version>
         <lombok.version>1.18.20</lombok.version>
-        <easyexcel.verson>3.3.2</easyexcel.verson>
+
     </properties>
 
     <dependencies>
@@ -36,7 +36,6 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>easyexcel</artifactId>
-            <version>${easyexcel.verson}</version>
         </dependency>
     </dependencies>
 

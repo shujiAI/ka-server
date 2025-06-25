@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shujiai.ka.mapper.TestMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.shujiai.ka.entity.TestDO">
+        <id column="id" property="id"/>
+        <result column="isValid" property="isValid"/>
+        <result column="assertClass" property="assertClass"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
+        <result column="create_by" property="createBy"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="tenant_id" property="tenantId"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="bpm_instance_status" property="bpmInstanceStatus"/>
+        <result column="bpm_instance_id" property="bpmInstanceId"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, isValid, assertClass, gmt_create, gmt_modified, create_by, update_by, tenant_id, is_deleted, bpm_instance_status, bpm_instance_id
+    </sql>
+
+    <sql id = "commonSelect">
+        SELECT
+        A.id,
+        A.isValid,
+        A.assertClass
+        FROM test A
+        <where> A.is_deleted = 0
+            <if test="isValid != null and isValid != ''">
+                AND A.isValid = #{isValid}
+            </if>
+            <if test="assertClass != null and assertClass != ''">
+                AND A.assertClass = #{assertClass}
+            </if>
+        </where>
+    </sql>
+
+    <select id = "selectByList" resultType="com.shujiai.ka.entity.TestDO"
+            parameterType="com.shujiai.ka.entity.TestDO"
+            resultMap="BaseResultMap">
+        <include refid="commonSelect"></include>
+    </select>
+
+</mapper>
