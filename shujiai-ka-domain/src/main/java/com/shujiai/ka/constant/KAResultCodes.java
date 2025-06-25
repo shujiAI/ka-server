@@ -1,7 +1,7 @@
 package com.shujiai.ka.constant;
 
 /**
- * @author hxh
+ * @author shujiai
  */
 
 import com.shujiai.base.result.ResultCode;
@@ -12,7 +12,7 @@ import java.io.Serializable;
 /**
  * 工作区结果代码
  *
- * @author hxh
+ * @author shujiai
  * @date 2023/11/4
  * @time 3:11 下午
  * result codes定义

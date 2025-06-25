@@ -1,7 +1,6 @@
 package com.shujiai.ka.web.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.shujiai.base.exception.BizException;
 import com.shujiai.ka.entity.TestDO;
@@ -28,7 +27,7 @@ public class TestServiceImpl extends ServiceImpl<TestMapper, TestDO> implements 
         System.out.println("testDOS = " + JSON.toJSONString(testDOS));
 
         if("1".equals(testDO.getId())){
-            throw new RuntimeException("测试事务");
+            throw new BizException("测试事务");
         }
 
         return testDO.getId();

@@ -4,7 +4,7 @@ package com.shujiai.ka.constant;
  * CommonDbFieldConstants
  * 共有的数据表字段
  *
- * @author hxh
+ * @author shujiai
  * @date 2023/11/4
  * @time 12:57:51
  */

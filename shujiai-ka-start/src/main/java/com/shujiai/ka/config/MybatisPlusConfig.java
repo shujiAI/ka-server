@@ -4,6 +4,8 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import com.shujiai.base.context.Context;
+import com.shujiai.ka.util.ContextHolder;
 import org.apache.ibatis.reflection.MetaObject;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
@@ -53,11 +55,21 @@ public class MybatisPlusConfig {
             public void insertFill(MetaObject metaObject) {
                 this.setFieldValByName("gmtCreate", new Date(), metaObject);
                 this.setFieldValByName("gmtModified", new Date(), metaObject);
+                final Context context = ContextHolder.getContext();
+                if (context != null) {
+                    this.setFieldValByName("createBy", context.getIdentityId(), metaObject);
+                    this.setFieldValByName("updateBy", context.getIdentityId(), metaObject);
+                    this.setFieldValByName("tenantId", context.getTenantId(), metaObject);
+                }
             }
 
             @Override
             public void updateFill(MetaObject metaObject) {
                 this.setFieldValByName("gmtModified", new Date(), metaObject);
+                final Context context = ContextHolder.getContext();
+                if (context != null) {
+                    this.setFieldValByName("updateBy", context.getIdentityId(), metaObject);
+                }
             }
         };
     }

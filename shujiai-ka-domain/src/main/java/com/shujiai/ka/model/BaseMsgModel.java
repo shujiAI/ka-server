@@ -3,7 +3,7 @@ package com.shujiai.ka.model;
 import java.io.Serializable;
 
 /**
- * @author hxh
+ * @author shujiai
  * @date 2023/11/4
  * @time 下午7:5747
  */

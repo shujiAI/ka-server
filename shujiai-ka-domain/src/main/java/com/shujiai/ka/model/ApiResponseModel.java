@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * 调metadata api返回结果
  *
- * @author hxh
+ * @author shujiai
  * @date 2023/11/4 19:49
  * <p>
  * 用于Create/Update/Delete api的返回结果序列化

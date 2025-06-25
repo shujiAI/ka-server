@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * EntityUtil
  *
- * @author hxh
+ * @author shujiai
  * @date 2023/11/4
  * @time 17:52:54
  */

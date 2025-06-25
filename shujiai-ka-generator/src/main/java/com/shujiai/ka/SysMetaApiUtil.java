@@ -4,7 +4,7 @@ package com.shujiai.ka;
  * SysMetaApiUtil
  * 生成系统api包里面的Constant类:
  *
- * @author hxh
+ * @author shujiai
  * @date 2023/11/4
  * @time 20:15:18
  */

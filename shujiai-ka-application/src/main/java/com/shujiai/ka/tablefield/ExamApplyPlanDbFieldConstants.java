@@ -4,7 +4,7 @@ package com.shujiai.ka.tablefield;
 import com.shujiai.ka.constant.CommonDbFieldConstants;
 
 /**
- * @author hxh
+ * @author shujiai
  */
 public class ExamApplyPlanDbFieldConstants extends CommonDbFieldConstants {
     public static final String year = "year";

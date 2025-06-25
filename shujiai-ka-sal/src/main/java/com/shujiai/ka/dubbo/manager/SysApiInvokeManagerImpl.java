@@ -31,7 +31,7 @@ import java.util.function.Supplier;
 /**
  * ApiInvokeManagerImpl
  *
- * @author hxh
+ * @author shujiai
  * @date 2023/11/4
  * @time 09:57:28
  * @descripton 优先使用这个manager，底层通过SysApiFacadeService实现，支持批量的功能，后续逐渐让meta 完善
