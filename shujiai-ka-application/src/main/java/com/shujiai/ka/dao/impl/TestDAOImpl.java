@@ -1,11 +1,12 @@
-package com.shujiai.ka.web.impl;
+package com.shujiai.ka.dao.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.shujiai.base.context.Context;
 import com.shujiai.base.exception.BizException;
+import com.shujiai.ka.dao.TestDAO;
 import com.shujiai.ka.entity.TestDO;
 import com.shujiai.ka.mapper.TestMapper;
-import com.shujiai.ka.web.api.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,13 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class TestServiceImpl extends ServiceImpl<TestMapper, TestDO> implements TestService {
+public class TestDAOImpl extends ServiceImpl<TestMapper, TestDO> implements TestDAO {
     @Autowired
     private TestMapper testMapper;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public String create(TestDO testDO) {
+    public String testTransactional(Context context, String appId, String version, TestDO testDO) {
         testMapper.deleteById("1");
         final int insert = testMapper.insert(testDO);
 

@@ -3,13 +3,12 @@ package com.shujiai.ka.controller;
 import com.shujiai.ka.dubbo.consumer.BpmnProcessInstanceServiceClient;
 import com.shujiai.ka.entity.TestDO;
 import com.shujiai.ka.manager.ScheduleTask;
-import com.shujiai.ka.mapper.TestMapper;
+import com.shujiai.ka.service.TestService;
 import com.shujiai.ka.test.TestOss;
 import com.shujiai.apaas.bpmn.facade.dto.process.ProcessBaseResponse;
 import com.shujiai.apaas.bpmn.facade.dto.process.ProcessCreateRequest;
 import com.shujiai.base.context.Context;
 import com.shujiai.base.result.Result;
-import com.shujiai.ka.web.api.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -123,12 +122,15 @@ public class TestController {
         return deptId;
     }
 
-    @RequestMapping(value = "/selectTestDOList", produces = "application/json")
-    public Object selectTestDOList(Context context, @RequestBody TestDO testDO) {
-//        context = new Context("60511DDBA5FE493E9F1973F577504CF2", "6ab74e7a885142579c9e680aaa3daa76");
-        final String id = testService.create(testDO);
+    @RequestMapping(value = "/testTransactional", produces = "application/json")
+    public Object testTransactional(Context context, @RequestBody TestDO testDO) {
+        context = new Context("60511DDBA5FE493E9F1973F577504CF2", "8b8e158e7a6f469e9d3667bbead8e874");
+        String appId = "3e02a807e03529a3eae9c778d4d38318";
+        String version = "__sys_draft_version__";
 
-        return id;
+        final Result<String> result = testService.testTransactional(context, appId, version, testDO);
+
+        return result;
     }
 
 }
