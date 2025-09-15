@@ -15,7 +15,7 @@ spring:
     nacos:
       config:
         #nacos配置中心地址
-        server-addr: onpremise-nacos-server:8848
+        server-addr: 10.3.1.58:8848
         #配置中心的命名空间id
         #namespace: public
         #配置分组，默认没有也可以
@@ -38,5 +38,5 @@ spring:
 
 nacos:
   config:
-    server-addr: onpremise-nacos-server:8848
+    server-addr: 10.3.1.58:8848
     namespace:
